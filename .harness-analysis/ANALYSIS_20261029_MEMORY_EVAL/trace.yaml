@@ -1,0 +1,35 @@
+trace_id: TRACE_MEMORY_EVAL_0001
+analysis_id: ANALYSIS_20261029_MEMORY_EVAL
+event_time: "2026-10-29T09:46:23.393617+08:00"
+status: verified
+scope:
+  project_scope: memory-storage-recall-project
+  tenant_scope: synthetic fixtures only
+  environment_scope: local
+  task_scope: P0/P1 evaluator foundation with bounded P2 rules and P3 simulation
+sensitivity: internal
+source_revision: "eval-0.1.0; frozen source/dependency hashes in resolved-manifest.json; source plans in source-plan.json"
+subject:
+  subject_type: workflow
+  subject_ref: EVAL01
+  cell_refs: []
+  pattern_refs: []
+observation:
+  trigger: user requested execution of the complete evaluation technical plan
+  before: text memory core with 36 passing tests; no evaluation control plane
+  adjustment: strict split contracts, prefix reconstruction, isolated actual core, durable cases, evidence rules and reports
+  outcome: 99 tests passed; 76 scheduled real-core cases, 64 passed, 4 failed and 8 blocked; full acceptance incomplete
+  validity: verified
+evidence_refs: [E01, E02, E03, E04, E05, E06, E07, E08, E09]
+verification_tasks:
+  - Human-reviewed 150 checkpoint pilot and OS-enforced Gold isolation
+  - Bitemporal state, actual fixed host, richer observation and failure injection
+  - Real pacing, Linux, media, cloud/migration, research and full acceptance matrices
+follow_up:
+  - docs/evaluation.md
+  - eir.md
+owner: Codex / evaluation maintainer
+retention:
+  policy: project
+  expires_at: null
+  deletion_or_archive_rule: archive after a superseding evaluator release; synthetic fixtures only

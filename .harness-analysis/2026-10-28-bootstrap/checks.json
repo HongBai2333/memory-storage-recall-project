@@ -1,0 +1,43 @@
+[
+  {
+    "check": "ruff-format",
+    "exit_code": 0,
+    "log": "ruff-format.log"
+  },
+  {
+    "check": "ruff",
+    "exit_code": 0,
+    "log": "ruff.log"
+  },
+  {
+    "check": "pytest",
+    "exit_code": 0,
+    "log": "pytest.log"
+  },
+  {
+    "check": "contracts",
+    "exit_code": 0,
+    "log": "contracts.log"
+  },
+  {
+    "check": "http-smoke",
+    "exit_code": 0,
+    "log": "http-smoke.log"
+  },
+  {
+    "check": "deepseek-harness-plugin",
+    "exit_code": 0,
+    "log": "deepseek-harness-plugin-validation.log"
+  },
+  {
+    "check": "dsh-functional-self-test",
+    "exit_code": 0,
+    "log": "dsh-functional-self-test-validation.log"
+  },
+  {
+    "check": "skill-local-links",
+    "exit_code": 0,
+    "count": 29,
+    "log": "skill-links.json"
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "question_id": {
+      "minLength": 1,
+      "title": "Question Id",
+      "type": "string"
+    },
+    "episode_id": {
+      "title": "Episode Id",
+      "type": "string"
+    },
+    "checkpoint_id": {
+      "title": "Checkpoint Id",
+      "type": "string"
+    },
+    "replay_seq": {
+      "minimum": 1,
+      "title": "Replay Seq",
+      "type": "integer"
+    },
+    "query_at": {
+      "format": "date-time",
+      "title": "Query At",
+      "type": "string"
+    },
+    "cutoff_replay_seq": {
+      "minimum": 0,
+      "title": "Cutoff Replay Seq",
+      "type": "integer"
+    },
+    "knowledge_cutoff_at": {
+      "format": "date-time",
+      "title": "Knowledge Cutoff At",
+      "type": "string"
+    },
+    "target_valid_at": {
+      "format": "date-time",
+      "title": "Target Valid At",
+      "type": "string"
+    },
+    "time_mode": {
+      "default": "current",
+      "enum": [
+        "current",
+        "as_known_at",
+        "as_of_event"
+      ],
+      "title": "Time Mode",
+      "type": "string"
+    },
+    "auth_subject_ref": {
+      "title": "Auth Subject Ref",
+      "type": "string"
+    },
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "conversation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Conversation Id"
+    },
+    "question": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Question",
+      "type": "string"
+    },
+    "required_capabilities": {
+      "default": [
+        "raw"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Capabilities",
+      "type": "array"
+    },
+    "consistency_mode": {
+      "default": "best_effort",
+      "enum": [
+        "best_effort",
+        "at_least"
+      ],
+      "title": "Consistency Mode",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question_id",
+    "episode_id",
+    "checkpoint_id",
+    "replay_seq",
+    "query_at",
+    "cutoff_replay_seq",
+    "knowledge_cutoff_at",
+    "target_valid_at",
+    "auth_subject_ref",
+    "project_id",
+    "question"
+  ],
+  "title": "Question",
+  "type": "object"
+}

@@ -1,0 +1,83 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "generation": {
+      "title": "Generation",
+      "type": "string"
+    },
+    "retrieval_type": {
+      "const": "lexical",
+      "default": "lexical",
+      "title": "Retrieval Type",
+      "type": "string"
+    },
+    "content_version": {
+      "default": "raw-text-v1",
+      "title": "Content Version",
+      "type": "string"
+    },
+    "chunking_version": {
+      "default": "whole-event-v1",
+      "title": "Chunking Version",
+      "type": "string"
+    },
+    "tokenizer_version": {
+      "title": "Tokenizer Version",
+      "type": "string"
+    },
+    "embedding_model": {
+      "default": null,
+      "title": "Embedding Model",
+      "type": "null"
+    },
+    "vector_space": {
+      "default": null,
+      "title": "Vector Space",
+      "type": "null"
+    },
+    "dimensions": {
+      "default": null,
+      "title": "Dimensions",
+      "type": "null"
+    },
+    "distance": {
+      "default": null,
+      "title": "Distance",
+      "type": "null"
+    },
+    "filter_schema": {
+      "default": "tenant-project-conversation-v1",
+      "title": "Filter Schema",
+      "type": "string"
+    },
+    "source_log_binding": {
+      "default": "per-project-watermark",
+      "title": "Source Log Binding",
+      "type": "string"
+    },
+    "source_types": {
+      "default": [
+        "message",
+        "document",
+        "tool"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Source Types",
+      "type": "array"
+    }
+  },
+  "required": [
+    "generation",
+    "tokenizer_version"
+  ],
+  "title": "IndexManifest",
+  "type": "object"
+}

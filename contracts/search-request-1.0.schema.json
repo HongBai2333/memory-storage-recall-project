@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "Budget": {
+      "additionalProperties": false,
+      "properties": {
+        "max_evidence_items": {
+          "default": 12,
+          "maximum": 40,
+          "minimum": 1,
+          "title": "Max Evidence Items",
+          "type": "integer"
+        },
+        "max_context_tokens": {
+          "default": 8000,
+          "maximum": 32000,
+          "minimum": 64,
+          "title": "Max Context Tokens",
+          "type": "integer"
+        },
+        "recent_limit": {
+          "default": 100,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Recent Limit",
+          "type": "integer"
+        }
+      },
+      "title": "Budget",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "query": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Query",
+      "type": "string"
+    },
+    "conversation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Conversation Id"
+    },
+    "time_mode": {
+      "const": "current",
+      "default": "current",
+      "title": "Time Mode",
+      "type": "string"
+    },
+    "log_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Log Id"
+    },
+    "min_commit_seq": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Min Commit Seq",
+      "type": "integer"
+    },
+    "consistency_mode": {
+      "default": "best_effort",
+      "enum": [
+        "best_effort",
+        "at_least"
+      ],
+      "title": "Consistency Mode",
+      "type": "string"
+    },
+    "wait_timeout_ms": {
+      "default": 500,
+      "maximum": 5000,
+      "minimum": 0,
+      "title": "Wait Timeout Ms",
+      "type": "integer"
+    },
+    "required_capabilities": {
+      "default": [
+        "lexical"
+      ],
+      "items": {
+        "enum": [
+          "lexical",
+          "vector",
+          "facts"
+        ],
+        "type": "string"
+      },
+      "title": "Required Capabilities",
+      "type": "array"
+    },
+    "optional_capabilities": {
+      "default": [
+        "vector"
+      ],
+      "items": {
+        "enum": [
+          "lexical",
+          "vector",
+          "facts"
+        ],
+        "type": "string"
+      },
+      "title": "Optional Capabilities",
+      "type": "array"
+    },
+    "budget": {
+      "$ref": "#/$defs/Budget"
+    },
+    "include_sources": {
+      "const": true,
+      "default": true,
+      "title": "Include Sources",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "project_id",
+    "query"
+  ],
+  "title": "SearchRequest",
+  "type": "object"
+}

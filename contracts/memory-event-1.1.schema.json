@@ -1,0 +1,383 @@
+{
+  "$defs": {
+    "Actor": {
+      "additionalProperties": false,
+      "properties": {
+        "external_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "External Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "user",
+            "assistant",
+            "system",
+            "tool",
+            "service"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "display_name": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Display Name"
+        }
+      },
+      "required": [
+        "external_id",
+        "role"
+      ],
+      "title": "Actor",
+      "type": "object"
+    },
+    "ContentBlock": {
+      "additionalProperties": false,
+      "properties": {
+        "block_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Block Id",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "text",
+            "tool_result"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 100000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Language"
+        }
+      },
+      "required": [
+        "block_id",
+        "type",
+        "text"
+      ],
+      "title": "ContentBlock",
+      "type": "object"
+    },
+    "DeletionTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "source_stream_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Stream Id",
+          "type": "string"
+        },
+        "source_event_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Event Id",
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "message",
+            "document"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "target_revision": {
+          "default": null,
+          "title": "Target Revision",
+          "type": "null"
+        }
+      },
+      "required": [
+        "source_stream_id",
+        "source_event_id",
+        "entity_type"
+      ],
+      "title": "DeletionTarget",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "delivery_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Delivery Id",
+      "type": "string"
+    },
+    "project_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Project Id",
+      "type": "string"
+    },
+    "connector_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Connector Id",
+      "type": "string"
+    },
+    "middleware_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Middleware Id",
+      "type": "string"
+    },
+    "origin_namespace": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Origin Namespace",
+      "type": "string"
+    },
+    "source_stream_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Stream Id",
+      "type": "string"
+    },
+    "source_event_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Event Id",
+      "type": "string"
+    },
+    "source_revision": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Source Revision",
+      "type": "string"
+    },
+    "source_sequence": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Sequence"
+    },
+    "expected_previous_revision": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Expected Previous Revision"
+    },
+    "event_type": {
+      "enum": [
+        "message.upsert",
+        "message.delete",
+        "document.upsert",
+        "document.delete",
+        "tool.result"
+      ],
+      "title": "Event Type",
+      "type": "string"
+    },
+    "conversation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Conversation Id"
+    },
+    "actor": {
+      "$ref": "#/$defs/Actor"
+    },
+    "occurred_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Occurred At"
+    },
+    "source_updated_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Updated At"
+    },
+    "source_timezone": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Timezone"
+    },
+    "time_precision": {
+      "default": "unknown",
+      "enum": [
+        "millisecond",
+        "second",
+        "minute",
+        "day",
+        "unknown"
+      ],
+      "title": "Time Precision",
+      "type": "string"
+    },
+    "content": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ContentBlock"
+      },
+      "maxItems": 128,
+      "title": "Content",
+      "type": "array"
+    },
+    "deletion_of": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/DeletionTarget"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "reply_to": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reply To"
+    },
+    "trace_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Trace Id"
+    },
+    "correlation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Correlation Id"
+    },
+    "causation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Causation Id"
+    },
+    "backfill": {
+      "default": false,
+      "title": "Backfill",
+      "type": "boolean"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "mapping_revision": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Mapping Revision",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "delivery_id",
+    "project_id",
+    "connector_id",
+    "middleware_id",
+    "origin_namespace",
+    "source_stream_id",
+    "source_event_id",
+    "source_revision",
+    "event_type",
+    "actor",
+    "occurred_at",
+    "mapping_revision"
+  ],
+  "title": "MemoryEvent",
+  "type": "object"
+}

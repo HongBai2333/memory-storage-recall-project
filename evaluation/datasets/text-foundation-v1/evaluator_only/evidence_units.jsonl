@@ -1,0 +1,13 @@
+{"block_id":"b1","end":20,"fixture_event_id":"budget-1","quote":"项目 A 预算为 100000 CNY。","source_revision":"1","start":0,"unit_id":"budget-1#b1"}
+{"block_id":"b1","end":23,"fixture_event_id":"budget-2","quote":"项目 A 预算已更新为 150000 CNY。","source_revision":"2","start":0,"unit_id":"budget-2#b1"}
+{"block_id":"b1","end":19,"fixture_event_id":"budget-b","quote":"项目 A 预算为 80000 CNY。","source_revision":"1","start":0,"unit_id":"budget-b#b1"}
+{"block_id":"b1","end":16,"fixture_event_id":"stone-1","quote":"最终选用灰色 A-123 石材。","source_revision":"1","start":0,"unit_id":"stone-1#b1"}
+{"block_id":"b1","end":21,"fixture_event_id":"stone-2","quote":"採用する品番は JP-900、色は青です。","source_revision":"1","start":0,"unit_id":"stone-2#b1"}
+{"block_id":"b1","end":10,"fixture_event_id":"project-location","quote":"项目 C 位于苏州。","source_revision":"1","start":0,"unit_id":"project-location#b1"}
+{"block_id":"b1","end":12,"fixture_event_id":"project-owner","quote":"项目 C 负责人是李明。","source_revision":"1","start":0,"unit_id":"project-owner#b1"}
+{"block_id":"b1","end":10,"fixture_event_id":"project-copy","quote":"项目 C 位于苏州。","source_revision":"1","start":0,"unit_id":"project-copy#b1"}
+{"block_id":"b1","end":13,"fixture_event_id":"blocks","quote":"验收项目 D 的说明如下。","source_revision":"1","start":0,"unit_id":"blocks#b1"}
+{"block_id":"b2","end":19,"fixture_event_id":"blocks","quote":"验收口令是 SAPPHIRE-742。","source_revision":"1","start":0,"unit_id":"blocks#b2"}
+{"block_id":"b1","end":19,"fixture_event_id":"future-canary","quote":"未来口令是 FUTURE-92817。","source_revision":"1","start":0,"unit_id":"future-canary#b1"}
+{"block_id":"b1","end":22,"fixture_event_id":"business-budget-1","quote":"项目 B 当前预算是 100000 CNY。","source_revision":"1","start":0,"unit_id":"business-budget-1#b1"}
+{"block_id":"b1","end":26,"fixture_event_id":"business-budget-2","quote":"项目 B 从今天起预算调整为 150000 CNY。","source_revision":"1","start":0,"unit_id":"business-budget-2#b1"}

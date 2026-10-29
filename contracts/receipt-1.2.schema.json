@@ -1,0 +1,85 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.2",
+      "default": "1.2",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "delivery_id": {
+      "title": "Delivery Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "committed",
+        "duplicate"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "core_instance_id": {
+      "title": "Core Instance Id",
+      "type": "string"
+    },
+    "route_epoch": {
+      "default": 1,
+      "title": "Route Epoch",
+      "type": "integer"
+    },
+    "log_id": {
+      "title": "Log Id",
+      "type": "string"
+    },
+    "commit_seq": {
+      "title": "Commit Seq",
+      "type": "integer"
+    },
+    "received_at": {
+      "format": "date-time",
+      "title": "Received At",
+      "type": "string"
+    },
+    "content_hash": {
+      "title": "Content Hash",
+      "type": "string"
+    },
+    "canonicalization_version": {
+      "default": "nfc-json-v1",
+      "title": "Canonicalization Version",
+      "type": "string"
+    },
+    "processing_ref": {
+      "title": "Processing Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "request_id",
+    "delivery_id",
+    "status",
+    "event_id",
+    "tenant_id",
+    "core_instance_id",
+    "log_id",
+    "commit_seq",
+    "received_at",
+    "content_hash",
+    "processing_ref"
+  ],
+  "title": "Receipt",
+  "type": "object"
+}

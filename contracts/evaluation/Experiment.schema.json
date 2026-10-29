@@ -1,0 +1,156 @@
+{
+  "$defs": {
+    "Budget": {
+      "additionalProperties": false,
+      "properties": {
+        "max_evidence_items": {
+          "default": 12,
+          "maximum": 40,
+          "minimum": 1,
+          "title": "Max Evidence Items",
+          "type": "integer"
+        },
+        "max_context_tokens": {
+          "default": 8000,
+          "maximum": 32000,
+          "minimum": 64,
+          "title": "Max Context Tokens",
+          "type": "integer"
+        },
+        "recent_limit": {
+          "default": 100,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Recent Limit",
+          "type": "integer"
+        }
+      },
+      "title": "Budget",
+      "type": "object"
+    },
+    "Variant": {
+      "additionalProperties": false,
+      "properties": {
+        "variant_id": {
+          "pattern": "^[a-zA-Z0-9_-]+$",
+          "title": "Variant Id",
+          "type": "string"
+        },
+        "index_enabled": {
+          "default": true,
+          "title": "Index Enabled",
+          "type": "boolean"
+        },
+        "worker_delay_ms": {
+          "default": 0,
+          "maximum": 3600000,
+          "minimum": 0,
+          "title": "Worker Delay Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "variant_id"
+      ],
+      "title": "Variant",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "eval-experiment-1.0",
+      "default": "eval-experiment-1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "experiment_id": {
+      "pattern": "^[a-zA-Z0-9_-]+$",
+      "title": "Experiment Id",
+      "type": "string"
+    },
+    "modes": {
+      "default": [
+        "capability",
+        "operational"
+      ],
+      "items": {
+        "enum": [
+          "capability",
+          "operational"
+        ],
+        "type": "string"
+      },
+      "title": "Modes",
+      "type": "array"
+    },
+    "operational_clock": {
+      "const": "simulated",
+      "default": "simulated",
+      "title": "Operational Clock",
+      "type": "string"
+    },
+    "repetitions": {
+      "default": 1,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Repetitions",
+      "type": "integer"
+    },
+    "variants": {
+      "items": {
+        "$ref": "#/$defs/Variant"
+      },
+      "minItems": 1,
+      "title": "Variants",
+      "type": "array"
+    },
+    "budget": {
+      "$ref": "#/$defs/Budget"
+    },
+    "query_deadline_ms": {
+      "default": 5000,
+      "maximum": 60000,
+      "minimum": 1,
+      "title": "Query Deadline Ms",
+      "type": "integer"
+    },
+    "case_timeout_seconds": {
+      "default": 30,
+      "maximum": 300,
+      "minimum": 1,
+      "title": "Case Timeout Seconds",
+      "type": "integer"
+    },
+    "host": {
+      "const": "extractive-context-v1",
+      "default": "extractive-context-v1",
+      "title": "Host",
+      "type": "string"
+    },
+    "rubric_revision": {
+      "const": "literal-extractive-v1",
+      "default": "literal-extractive-v1",
+      "title": "Rubric Revision",
+      "type": "string"
+    },
+    "bootstrap_repetitions": {
+      "default": 2000,
+      "maximum": 10000,
+      "minimum": 100,
+      "title": "Bootstrap Repetitions",
+      "type": "integer"
+    },
+    "random_seed": {
+      "default": 101,
+      "title": "Random Seed",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "variants"
+  ],
+  "title": "Experiment",
+  "type": "object"
+}

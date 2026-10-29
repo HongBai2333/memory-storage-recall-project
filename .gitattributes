@@ -1,0 +1,2 @@
+# Frozen fixture hashes require byte-for-byte storage and checkout on every platform.
+evaluation/datasets/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

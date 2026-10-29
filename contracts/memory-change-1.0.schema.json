@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "change_id": {
+      "title": "Change Id",
+      "type": "string"
+    },
+    "log_id": {
+      "title": "Log Id",
+      "type": "string"
+    },
+    "commit_seq": {
+      "title": "Commit Seq",
+      "type": "integer"
+    },
+    "event_id": {
+      "title": "Event Id",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "string"
+    },
+    "entity_key": {
+      "title": "Entity Key",
+      "type": "string"
+    },
+    "operation": {
+      "enum": [
+        "upsert",
+        "delete"
+      ],
+      "title": "Operation",
+      "type": "string"
+    }
+  },
+  "required": [
+    "change_id",
+    "log_id",
+    "commit_seq",
+    "event_id",
+    "revision",
+    "entity_key",
+    "operation"
+  ],
+  "title": "Change",
+  "type": "object"
+}

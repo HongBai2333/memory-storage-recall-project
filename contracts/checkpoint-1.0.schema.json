@@ -1,0 +1,42 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "checkpoint_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Checkpoint Id",
+      "type": "string"
+    },
+    "workflow_version": {
+      "maxLength": 128,
+      "minLength": 1,
+      "title": "Workflow Version",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "idempotency_key": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Idempotency Key",
+      "type": "string"
+    },
+    "state": {
+      "additionalProperties": true,
+      "title": "State",
+      "type": "object"
+    }
+  },
+  "required": [
+    "checkpoint_id",
+    "workflow_version",
+    "expected_revision",
+    "idempotency_key",
+    "state"
+  ],
+  "title": "CheckpointWrite",
+  "type": "object"
+}

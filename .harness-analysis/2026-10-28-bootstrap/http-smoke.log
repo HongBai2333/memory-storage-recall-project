@@ -1,0 +1,1 @@
+{"status": "passed", "transport": "loopback HTTP", "checks": ["startup", "ingest", "background FTS", "at_least", "checkpoint", "process restart", "durable idempotency", "deletion", "Unicode path", "owned-process cleanup"]}

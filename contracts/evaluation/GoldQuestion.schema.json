@@ -1,0 +1,109 @@
+{
+  "$defs": {
+    "AnswerAtom": {
+      "additionalProperties": false,
+      "properties": {
+        "atom_id": {
+          "title": "Atom Id",
+          "type": "string"
+        },
+        "accepted_text": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Accepted Text",
+          "type": "array"
+        },
+        "evidence_sets": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "minItems": 1,
+          "title": "Evidence Sets",
+          "type": "array"
+        }
+      },
+      "required": [
+        "atom_id",
+        "accepted_text",
+        "evidence_sets"
+      ],
+      "title": "AnswerAtom",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "question_id": {
+      "title": "Question Id",
+      "type": "string"
+    },
+    "expected_action": {
+      "enum": [
+        "answer",
+        "insufficient_evidence",
+        "deny",
+        "pending"
+      ],
+      "title": "Expected Action",
+      "type": "string"
+    },
+    "answer_atoms": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/AnswerAtom"
+      },
+      "title": "Answer Atoms",
+      "type": "array"
+    },
+    "gold_evidence_sets": {
+      "default": [],
+      "items": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "title": "Gold Evidence Sets",
+      "type": "array"
+    },
+    "forbidden_claims": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Forbidden Claims",
+      "type": "array"
+    },
+    "tags": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "cluster_id": {
+      "minLength": 1,
+      "title": "Cluster Id",
+      "type": "string"
+    },
+    "rubric": {
+      "const": "literal-extractive-v1",
+      "default": "literal-extractive-v1",
+      "title": "Rubric",
+      "type": "string"
+    }
+  },
+  "required": [
+    "question_id",
+    "expected_action",
+    "cluster_id"
+  ],
+  "title": "GoldQuestion",
+  "type": "object"
+}

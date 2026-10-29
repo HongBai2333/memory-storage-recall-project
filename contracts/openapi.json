@@ -1,0 +1,1060 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fusion Memory",
+    "description": "P0/P1 text foundation. Events 1.1; receipts 1.2. Model capabilities unavailable.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health/live": {
+      "get": {
+        "summary": "Live",
+        "operationId": "live_health_live_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "summary": "Ready",
+        "operationId": "ready_health_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/capabilities": {
+      "get": {
+        "summary": "Capabilities",
+        "operationId": "capabilities_v1_capabilities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ]
+      }
+    },
+    "/v1/events": {
+      "post": {
+        "summary": "Ingest",
+        "operationId": "ingest_v1_events_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MemoryEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Receipt"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ]
+      }
+    },
+    "/v1/sources/{event_id}": {
+      "get": {
+        "summary": "Read Source",
+        "operationId": "read_source_v1_sources__event_id__get",
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/processing-status/{event_id}": {
+      "get": {
+        "summary": "Processing",
+        "operationId": "processing_v1_processing_status__event_id__get",
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "event_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Event Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/context/assemble": {
+      "post": {
+        "summary": "Search",
+        "operationId": "search_v1_context_assemble_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ]
+      }
+    },
+    "/v1/memory/search": {
+      "post": {
+        "summary": "Search",
+        "operationId": "search_v1_memory_search_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ]
+      }
+    },
+    "/v1/checkpoints": {
+      "post": {
+        "summary": "Save Checkpoint",
+        "operationId": "save_checkpoint_v1_checkpoints_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckpointWrite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ]
+      }
+    },
+    "/v1/checkpoints/{checkpoint_id}": {
+      "get": {
+        "summary": "Read Checkpoint",
+        "operationId": "read_checkpoint_v1_checkpoints__checkpoint_id__get",
+        "security": [
+          {
+            "ConnectorCredential": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "checkpoint_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Checkpoint Id"
+            }
+          },
+          {
+            "name": "workflow_version",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Workflow Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Actor": {
+        "properties": {
+          "external_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "External Id"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant",
+              "system",
+              "tool",
+              "service"
+            ],
+            "title": "Role"
+          },
+          "display_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 256
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Name"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "external_id",
+          "role"
+        ],
+        "title": "Actor"
+      },
+      "Budget": {
+        "properties": {
+          "max_evidence_items": {
+            "type": "integer",
+            "maximum": 40.0,
+            "minimum": 1.0,
+            "title": "Max Evidence Items",
+            "default": 12
+          },
+          "max_context_tokens": {
+            "type": "integer",
+            "maximum": 32000.0,
+            "minimum": 64.0,
+            "title": "Max Context Tokens",
+            "default": 8000
+          },
+          "recent_limit": {
+            "type": "integer",
+            "maximum": 1000.0,
+            "minimum": 1.0,
+            "title": "Recent Limit",
+            "default": 100
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Budget"
+      },
+      "CheckpointWrite": {
+        "properties": {
+          "checkpoint_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Checkpoint Id"
+          },
+          "workflow_version": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Workflow Version"
+          },
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Revision"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Idempotency Key"
+          },
+          "state": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "State"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "checkpoint_id",
+          "workflow_version",
+          "expected_revision",
+          "idempotency_key",
+          "state"
+        ],
+        "title": "CheckpointWrite"
+      },
+      "ContentBlock": {
+        "properties": {
+          "block_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Block Id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "tool_result"
+            ],
+            "title": "Type"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 100000,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "block_id",
+          "type",
+          "text"
+        ],
+        "title": "ContentBlock"
+      },
+      "DeletionTarget": {
+        "properties": {
+          "source_stream_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Stream Id"
+          },
+          "source_event_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Event Id"
+          },
+          "entity_type": {
+            "type": "string",
+            "enum": [
+              "message",
+              "document"
+            ],
+            "title": "Entity Type"
+          },
+          "target_revision": {
+            "type": "null",
+            "title": "Target Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_stream_id",
+          "source_event_id",
+          "entity_type"
+        ],
+        "title": "DeletionTarget"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "MemoryEvent": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.1",
+            "title": "Schema Version"
+          },
+          "delivery_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Delivery Id"
+          },
+          "project_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Project Id"
+          },
+          "connector_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Connector Id"
+          },
+          "middleware_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Middleware Id"
+          },
+          "origin_namespace": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Origin Namespace"
+          },
+          "source_stream_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Stream Id"
+          },
+          "source_event_id": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Event Id"
+          },
+          "source_revision": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Source Revision"
+          },
+          "source_sequence": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Sequence"
+          },
+          "expected_previous_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Previous Revision"
+          },
+          "event_type": {
+            "type": "string",
+            "enum": [
+              "message.upsert",
+              "message.delete",
+              "document.upsert",
+              "document.delete",
+              "tool.result"
+            ],
+            "title": "Event Type"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/Actor"
+          },
+          "occurred_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Occurred At"
+          },
+          "source_updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Updated At"
+          },
+          "source_timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Timezone"
+          },
+          "time_precision": {
+            "type": "string",
+            "enum": [
+              "millisecond",
+              "second",
+              "minute",
+              "day",
+              "unknown"
+            ],
+            "title": "Time Precision",
+            "default": "unknown"
+          },
+          "content": {
+            "items": {
+              "$ref": "#/components/schemas/ContentBlock"
+            },
+            "type": "array",
+            "maxItems": 128,
+            "title": "Content",
+            "default": []
+          },
+          "deletion_of": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DeletionTarget"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reply_to": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply To"
+          },
+          "trace_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trace Id"
+          },
+          "correlation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Correlation Id"
+          },
+          "causation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Causation Id"
+          },
+          "backfill": {
+            "type": "boolean",
+            "title": "Backfill",
+            "default": false
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Metadata"
+          },
+          "mapping_revision": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 1,
+            "title": "Mapping Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "delivery_id",
+          "project_id",
+          "connector_id",
+          "middleware_id",
+          "origin_namespace",
+          "source_stream_id",
+          "source_event_id",
+          "source_revision",
+          "event_type",
+          "actor",
+          "occurred_at",
+          "mapping_revision"
+        ],
+        "title": "MemoryEvent"
+      },
+      "Receipt": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.2",
+            "title": "Schema Version",
+            "default": "1.2"
+          },
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "delivery_id": {
+            "type": "string",
+            "title": "Delivery Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "committed",
+              "duplicate"
+            ],
+            "title": "Status"
+          },
+          "event_id": {
+            "type": "string",
+            "title": "Event Id"
+          },
+          "tenant_id": {
+            "type": "string",
+            "title": "Tenant Id"
+          },
+          "core_instance_id": {
+            "type": "string",
+            "title": "Core Instance Id"
+          },
+          "route_epoch": {
+            "type": "integer",
+            "title": "Route Epoch",
+            "default": 1
+          },
+          "log_id": {
+            "type": "string",
+            "title": "Log Id"
+          },
+          "commit_seq": {
+            "type": "integer",
+            "title": "Commit Seq"
+          },
+          "received_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Received At"
+          },
+          "content_hash": {
+            "type": "string",
+            "title": "Content Hash"
+          },
+          "canonicalization_version": {
+            "type": "string",
+            "title": "Canonicalization Version",
+            "default": "nfc-json-v1"
+          },
+          "processing_ref": {
+            "type": "string",
+            "title": "Processing Ref"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "delivery_id",
+          "status",
+          "event_id",
+          "tenant_id",
+          "core_instance_id",
+          "log_id",
+          "commit_seq",
+          "received_at",
+          "content_hash",
+          "processing_ref"
+        ],
+        "title": "Receipt"
+      },
+      "SearchRequest": {
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "title": "Project Id"
+          },
+          "query": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Query"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "time_mode": {
+            "type": "string",
+            "const": "current",
+            "title": "Time Mode",
+            "default": "current"
+          },
+          "log_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Log Id"
+          },
+          "min_commit_seq": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Min Commit Seq",
+            "default": 0
+          },
+          "consistency_mode": {
+            "type": "string",
+            "enum": [
+              "best_effort",
+              "at_least"
+            ],
+            "title": "Consistency Mode",
+            "default": "best_effort"
+          },
+          "wait_timeout_ms": {
+            "type": "integer",
+            "maximum": 5000.0,
+            "minimum": 0.0,
+            "title": "Wait Timeout Ms",
+            "default": 500
+          },
+          "required_capabilities": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "vector",
+                "facts"
+              ]
+            },
+            "type": "array",
+            "title": "Required Capabilities",
+            "default": [
+              "lexical"
+            ]
+          },
+          "optional_capabilities": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "lexical",
+                "vector",
+                "facts"
+              ]
+            },
+            "type": "array",
+            "title": "Optional Capabilities",
+            "default": [
+              "vector"
+            ]
+          },
+          "budget": {
+            "$ref": "#/components/schemas/Budget"
+          },
+          "include_sources": {
+            "type": "boolean",
+            "const": true,
+            "title": "Include Sources",
+            "default": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "project_id",
+          "query"
+        ],
+        "title": "SearchRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "ConnectorCredential": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

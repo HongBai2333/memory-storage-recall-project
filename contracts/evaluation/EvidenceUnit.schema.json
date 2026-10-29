@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "unit_id": {
+      "minLength": 1,
+      "title": "Unit Id",
+      "type": "string"
+    },
+    "fixture_event_id": {
+      "title": "Fixture Event Id",
+      "type": "string"
+    },
+    "source_revision": {
+      "title": "Source Revision",
+      "type": "string"
+    },
+    "block_id": {
+      "title": "Block Id",
+      "type": "string"
+    },
+    "start": {
+      "minimum": 0,
+      "title": "Start",
+      "type": "integer"
+    },
+    "end": {
+      "exclusiveMinimum": 0,
+      "title": "End",
+      "type": "integer"
+    },
+    "quote": {
+      "minLength": 1,
+      "title": "Quote",
+      "type": "string"
+    }
+  },
+  "required": [
+    "unit_id",
+    "fixture_event_id",
+    "source_revision",
+    "block_id",
+    "start",
+    "end",
+    "quote"
+  ],
+  "title": "EvidenceUnit",
+  "type": "object"
+}

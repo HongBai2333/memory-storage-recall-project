@@ -1,0 +1,125 @@
+{
+  "$defs": {
+    "Scope": {
+      "additionalProperties": false,
+      "properties": {
+        "tenant_id": {
+          "title": "Tenant Id",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "connector_id": {
+          "title": "Connector Id",
+          "type": "string"
+        },
+        "middleware_id": {
+          "title": "Middleware Id",
+          "type": "string"
+        },
+        "origin_namespace": {
+          "title": "Origin Namespace",
+          "type": "string"
+        },
+        "actor_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Actor Ids",
+          "type": "array"
+        },
+        "permissions": {
+          "default": [
+            "write",
+            "read"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "title": "Permissions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "tenant_id",
+        "project_id",
+        "connector_id",
+        "middleware_id",
+        "origin_namespace",
+        "actor_ids"
+      ],
+      "title": "Scope",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "eval-dataset-1.0",
+      "default": "eval-dataset-1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "dataset_id": {
+      "title": "Dataset Id",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "string"
+    },
+    "split": {
+      "enum": [
+        "development",
+        "test"
+      ],
+      "title": "Split",
+      "type": "string"
+    },
+    "license": {
+      "minLength": 1,
+      "title": "License",
+      "type": "string"
+    },
+    "synthetic": {
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "annotation_status": {
+      "enum": [
+        "synthetic_unreviewed",
+        "human_reviewed"
+      ],
+      "title": "Annotation Status",
+      "type": "string"
+    },
+    "files": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Files",
+      "type": "object"
+    },
+    "subjects": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Scope"
+      },
+      "title": "Subjects",
+      "type": "object"
+    }
+  },
+  "required": [
+    "dataset_id",
+    "revision",
+    "split",
+    "license",
+    "synthetic",
+    "annotation_status",
+    "files",
+    "subjects"
+  ],
+  "title": "DatasetManifest",
+  "type": "object"
+}

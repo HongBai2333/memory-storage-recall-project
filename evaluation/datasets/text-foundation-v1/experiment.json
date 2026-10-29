@@ -1,0 +1,33 @@
+{
+  "schema_version": "eval-experiment-1.0",
+  "experiment_id": "text-foundation-pilot",
+  "modes": [
+    "capability",
+    "operational"
+  ],
+  "operational_clock": "simulated",
+  "repetitions": 1,
+  "variants": [
+    {
+      "variant_id": "raw_only",
+      "index_enabled": false,
+      "worker_delay_ms": 0
+    },
+    {
+      "variant_id": "lexical_delayed",
+      "index_enabled": true,
+      "worker_delay_ms": 5000
+    }
+  ],
+  "budget": {
+    "max_evidence_items": 12,
+    "max_context_tokens": 8000,
+    "recent_limit": 100
+  },
+  "query_deadline_ms": 5000,
+  "case_timeout_seconds": 30,
+  "host": "extractive-context-v1",
+  "rubric_revision": "literal-extractive-v1",
+  "bootstrap_repetitions": 2000,
+  "random_seed": 101
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "eval-dataset-1.0",
+  "dataset_id": "text-foundation-pilot",
+  "revision": "1",
+  "split": "development",
+  "license": "Project-authored synthetic fixtures; no external or personal data",
+  "synthetic": true,
+  "annotation_status": "synthetic_unreviewed",
+  "files": {
+    "public/episodes.jsonl": "3f9b012dcdcf451fc555f5d651b6fe1d6070588e766e5b5d99678a44bd3e6d12",
+    "public/events.jsonl": "b5b05dcf3aa7fda02efde1f10560341ffc576e0d57a9253f7ff4143ae9afd1ab",
+    "public/questions.jsonl": "e4a65a9a51046b90c7ccb10058640c16b98a54679990e2224eae0059d118dc5e",
+    "evaluator_only/evidence_units.jsonl": "232a3f61c26fe4c21199a2035f0ece7939129fcaf1cc8db7db6e2b00a0d2ca4d",
+    "evaluator_only/gold_questions.jsonl": "2e83271ef0e1c74013b92522b8f1cde0ed78c5ce186081dadee722508bbc3617"
+  },
+  "subjects": {
+    "alice": {
+      "tenant_id": "tenant-a",
+      "project_id": "project-a",
+      "connector_id": "fixture",
+      "middleware_id": "eval",
+      "origin_namespace": "fixture:a",
+      "actor_ids": [
+        "alice"
+      ],
+      "permissions": [
+        "write",
+        "read"
+      ]
+    },
+    "bob": {
+      "tenant_id": "tenant-b",
+      "project_id": "project-a",
+      "connector_id": "fixture",
+      "middleware_id": "eval",
+      "origin_namespace": "fixture:b",
+      "actor_ids": [
+        "bob"
+      ],
+      "permissions": [
+        "write",
+        "read"
+      ]
+    }
+  }
+}
