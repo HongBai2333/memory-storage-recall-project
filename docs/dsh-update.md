@@ -1,19 +1,14 @@
-# DSH 官方更新核对
+# DSH 接入兼容性基线
 
 核对日期：2026-10-28（Asia/Shanghai）。从 [官网](https://www.deepseek.com/harness/) 跟随官方仓库及开发文档入口，核对 [v0.2.2-alpha.2 发布](https://github.com/deepseek-ai/deepseek-harness/releases/tag/dsh-v0.2.2-alpha.2)，提交 `f3803c96974ad4a94195fb97e5c637e9c2a3afe3`，发布日期 2026-10-28 10:50:54。
 
-在既有父项目 `skills` 中原地更新：
-
-- `deepseek-harness-plugin/SKILL.md` 与 sources、version-updates、packaging-and-validation、tools-and-extensions、plugin-contracts 六个文件。
-- `dsh-functional-self-test/SKILL.md` 与 test-matrix 两个文件。
-
-共八个文件，保持中英双语元信息、使用、流程与约束；未新建技能，因此没有复制出两份同名 Skill。改前文件已归档至本项目 `.harness-analysis/2026-10-28-bootstrap/skills-before.zip`。
+本页保留上述日期的文档与源码核对结果，用于后续适配器设计；不表示本项目已经安装或验证该宿主版本。
 
 ## 与记忆适配器直接相关的变化
 
 | 变化 | 实施影响 |
 | --- | --- |
-| Node >=24.9.0 | 本机 Node 24.14.1 满足；这不表示用户运行中的 DSH 已升级 |
+| Node >=24.9.0 | 目标宿主和构建环境需满足此要求，并分别记录实际运行版本 |
 | 工具 executor 拆包 | 移除 tools.mode/maxParallelSubCalls 与 DSH_TOOLS_MODE；组合显式挂载 Native/PTC executor |
 | 条件工具按步准入 | `system-prompt/assemble` 不再携带 tools；使用 when/toolSet，声明与执行一致 |
 | PTC script/retainsState/ABORTED | 适配程序格式与状态保存；区分调用取消和普通失败，保留历史错误兼容 |
@@ -24,8 +19,6 @@
 | 技能目录完整性 | incomplete snapshot 不作为权威空目录缓存，失效后重新读取 |
 | 第三方插件更新 | 有热更新失败后的恢复尝试，不能声称原子回滚 |
 
-上述每项固定源码/迁移链接保存在 [本地迁移参考](../../skills/deepseek-harness-plugin/references/version-updates.md)。官方源码与对比信息缓存在本项目 `.harness-analysis/2026-10-28-bootstrap/upstream` 目录；没有修改用户 DSH 安装、日常 profile 或旁边写作项目的依赖。
+核对来源为上方固定版本发布及其提交。正式接入时，应分别记录文档基线、项目 SDK 依赖、运行中宿主版本和实际测试兼容范围。
 
-只读抽查到 `writing-plugin/node_modules/@deepseek-ai/dsh-agent` 为 0.2.1-alpha.4。文档基线、该目录的 SDK、运行中宿主和实际测试兼容范围是四个不同事实。本次只完成前者更新，DSH Loader/Host/Native/PTC 集成仍为 not_run。
-
-验证：两份技能通过 quick_validate（Windows 使用 `python -X utf8`）；引用文件路径检查和固定来源检查另见实施报告。第一次按系统 GBK 默认编码运行 validator 失败，改为 UTF-8 后通过，未修改技能校验器本身。
+当前 DSH Loader/Host/Native/PTC 集成仍为 `not_run`。接入验收需在隔离宿主中覆盖加载、工具调用、取消、卸载重挂、附件权限及恢复流程；文档核对不替代这些运行验证。

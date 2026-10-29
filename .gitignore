@@ -7,6 +7,10 @@ __pycache__/
 build/
 dist/
 .local-data/
-artifacts/evaluation/
-.harness-analysis/**/upstream/
-.harness-analysis/**/skills-before.zip
+artifacts/
+.harness-analysis/
+.env
+.env.*
+!.env.example
+.coverage
+htmlcov/
